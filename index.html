@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benvenuto Chicken</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= INÍCIO ================= -->
+
+<section id="inicio" class="tela ativa">
+
+    <div class="logo-area">
+        <h1>BENVENUTO</h1>
+        <h2>CHICKEN</h2>
+        <p>🍗 Sabor que conquista!</p>
+    </div>
+
+    <div class="imagens-inicio">
+
+        <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450d58cd?auto=format&fit=crop&w=900&q=85"
+            alt="Lanche">
+
+        <img
+            src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=900&q=85"
+            alt="Frango">
+
+        <img
+            src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85"
+            alt="Refrigerante">
+
+    </div>
+
+    <button class="btn-cardapio" onclick="abrirCardapio()">
+        CARDÁPIO
+    </button>
+
+</section>
+
+
+<!-- ================= CATEGORIAS ================= -->
+
+<section id="cardapio" class="tela">
+
+    <div class="cabecalho">
+        <h1>🍗 NOSSO CARDÁPIO</h1>
+        <p>Escolha uma categoria</p>
+    </div>
+
+    <div class="categorias">
+
+        <button onclick="abrirCategoria('lanches')">
+            🍔 LANCHES
+        </button>
+
+        <button onclick="abrirCategoria('baldes')">
+            🍗 BALDES
+        </button>
+
+        <button onclick="abrirCategoria('combos')">
+            🔥 COMBOS
+        </button>
+
+        <button onclick="abrirCategoria('bebidas')">
+            🥤 BEBIDAS
+        </button>
+
+        <button onclick="abrirCategoria('porcoes')">
+            🍟 PORÇÕES
+        </button>
+
+        <button onclick="abrirCategoria('molhos')">
+            🥣 MOLHOS
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUTOS ================= -->
+
+<section id="produtos" class="tela">
+
+    <div class="topo-produtos">
+
+        <button class="btn-voltar" onclick="voltarCategorias()">
+            ← VOLTAR ÀS CATEGORIAS
+        </button>
+
+        <h1 id="tituloCategoria"></h1>
+
+    </div>
+
+    <div id="listaProdutos"></div>
+
+</section>
+
+
+<!-- ================= BOTÃO CARRINHO ================= -->
+
+<button id="botaoCarrinho" onclick="abrirCarrinho()">
+
+    🛒
+
+    <span>VER CARRINHO</span>
+
+    <strong id="quantidadeCarrinho">0</strong>
+
+</button>
+
+
+<!-- ================= MODAL PRODUTO ================= -->
+
+<div id="modalProduto" class="modal">
+
+    <div class="modal-conteudo">
+
+        <button class="fechar" onclick="fecharModal('modalProduto')">
+            ✕
+        </button>
+
+        <h2 id="modalTitulo"></h2>
+
+        <p id="modalDescricao"></p>
+
+        <div id="opcoesProduto"></div>
+
+        <div class="quantidade">
+
+            <button onclick="alterarQuantidade(-1)">
+                −
+            </button>
+
+            <strong id="quantidadeProduto">
+                1
+            </strong>
+
+            <button onclick="alterarQuantidade(1)">
+                +
+            </button>
+
+        </div>
+
+        <button class="btn-adicionar" onclick="confirmarProduto()">
+            ADICIONAR AO CARRINHO
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MODAL CARRINHO ================= -->
+
+<div id="modalCarrinho" class="modal">
+
+    <div class="modal-conteudo carrinho-conteudo">
+
+        <button class="fechar" onclick="fecharModal('modalCarrinho')">
+            ✕
+        </button>
+
+        <h2>🛒 SEU PEDIDO</h2>
+
+        <div id="listaCarrinho"></div>
+
+        <div class="totais">
+
+            <p>
+                Subtotal:
+                <strong id="subtotal">R$ 0,00</strong>
+            </p>
+
+            <p>
+                Taxa de entrega:
+                <strong id="taxaEntrega">R$ 0,00</strong>
+            </p>
+
+            <p class="total-final">
+                TOTAL:
+                <strong id="total">R$ 0,00</strong>
+            </p>
+
+        </div>
+
+
+        <!-- ENTREGA / RETIRADA -->
+
+        <div class="tipo-pedido">
+
+            <h3>Como deseja receber?</h3>
+
+            <label>
+                <input
+                    type="radio"
+                    name="tipoPedido"
+                    value="Entrega"
+                    onchange="mudarTipoPedido()"
+                >
+                🚚 ENTREGA
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="tipoPedido"
+                    value="Retirada"
+                    onchange="mudarTipoPedido()"
+                >
+                🏪 RETIRADA
+            </label>
+
+        </div>
+
+
+        <!-- DADOS DO CLIENTE -->
+
+        <div id="dadosCliente">
+
+            <h3>👤 Seus dados</h3>
+
+            <label>
+                Nome:
+                <input
+                    type="text"
+                    id="nomeCliente"
+                    placeholder="Digite seu nome"
+                >
+            </label>
+
+            <div id="dadosEntrega">
+
+                <label>
+                    Rua e número:
+                    <input
+                        type="text"
+                        id="ruaCliente"
+                        placeholder="Ex.: Rua Paraná, 123"
+                    >
+                </label>
+
+                <label>
+                    Bairro:
+                    <input
+                        type="text"
+                        id="bairroCliente"
+                        placeholder="Digite seu bairro"
+                    >
+                </label>
+
+            </div>
+
+            <label>
+                Observação:
+                <textarea
+                    id="observacaoCliente"
+                    placeholder="Alguma observação?"
+                ></textarea>
+            </label>
+
+        </div>
+
+
+        <!-- PAGAMENTO -->
+
+        <div class="pagamento">
+
+            <h3>💳 Forma de pagamento</h3>
+
+            <label>
+                <input
+                    type="radio"
+                    name="pagamento"
+                    value="Dinheiro"
+                    onchange="mostrarPagamento()"
+                >
+                💵 DINHEIRO
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="pagamento"
+                    value="Crédito"
+                    onchange="mostrarPagamento()"
+                >
+                💳 CRÉDITO
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="pagamento"
+                    value="Débito"
+                    onchange="mostrarPagamento()"
+                >
+                💳 DÉBITO
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="pagamento"
+                    value="PIX"
+                    onchange="mostrarPagamento()"
+                >
+                🟢 PIX
+            </label>
+
+        </div>
+
+
+        <div id="dadosPagamento"></div>
+
+
+        <button
+            class="btn-finalizar"
+            onclick="enviarWhatsApp()"
+        >
+            📲 FINALIZAR PEDIDO NO WHATSAPP
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
