@@ -1,0 +1,775 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    background: #050505;
+    border-bottom: 3px solid #d71920;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: auto;
+}
+
+nav button {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #009246;
+    border-radius: 10px;
+    background: #111;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+nav button:hover {
+    background: #009246;
+}
+
+
+/* =========================
+   INÍCIO
+========================= */
+
+.inicio {
+    text-align: center;
+    padding: 70px 20px;
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inicio h2 {
+    font-size: 38px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.inicio p {
+    font-size: 21px;
+    color: #ddd;
+    margin-bottom: 35px;
+}
+
+.btn-cardapio {
+    background: #d71920;
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 20px 50px;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 5px 0 #8e0005;
+}
+
+.btn-cardapio:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   CARDÁPIO
+========================= */
+
+.cardapio {
+    display: none;
+    padding: 35px 20px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.cardapio h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.cardapio button {
+    width: 100%;
+    display: block;
+    margin-bottom: 14px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    background: #111;
+    color: #fff;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.cardapio button:nth-child(3n + 1) {
+    border-color: #009246;
+}
+
+.cardapio button:nth-child(3n + 2) {
+    border-color: #fff;
+}
+
+.cardapio button:nth-child(3n) {
+    border-color: #ce2b37;
+}
+
+.cardapio button:hover {
+    background: #d71920;
+}
+
+
+/* =========================
+   PRODUTOS
+========================= */
+
+.produtos-pagina {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.categoria-produtos {
+    display: none;
+}
+
+.categoria-produtos h2 {
+    font-size: 30px;
+    text-align: center;
+    margin: 25px 0;
+    padding: 15px;
+    border-radius: 10px;
+    background: #111;
+    border-bottom: 4px solid #d71920;
+}
+
+.produto-card {
+    background: #111;
+    border: 2px solid #333;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.produto-info {
+    flex: 1;
+}
+
+.produto-info h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.produto-info p {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.produto-info strong {
+    color: #fff;
+    font-size: 20px;
+}
+
+.produto-card > button {
+    background: #d71920;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   CARRINHO FLUTUANTE
+========================= */
+
+.carrinho-flutuante {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+
+    background: #009246;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 50px;
+
+    padding: 16px 22px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#contadorCarrinho {
+    background: #d71920;
+    padding: 5px 9px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+
+/* =========================
+   MODAIS
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+}
+
+.modal-conteudo {
+    background: #111;
+    border: 3px solid #d71920;
+    border-radius: 16px;
+
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 25px;
+    position: relative;
+}
+
+.modal-conteudo h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.modal-conteudo h3 {
+    margin: 20px 0 12px;
+    font-size: 21px;
+}
+
+.fechar {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #d71920;
+    color: #fff;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   ADICIONAIS
+========================= */
+
+.adicional-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px;
+    margin-bottom: 8px;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    background: #181818;
+
+    font-size: 17px;
+}
+
+.adicional-item input {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* =========================
+   BALDE
+========================= */
+
+#modalBalde label {
+    display: block;
+    padding: 13px;
+    margin-bottom: 8px;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    background: #181818;
+
+    font-size: 18px;
+}
+
+#modalBalde input {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+#opcoesMisto {
+    margin-top: 10px;
+    padding: 15px;
+
+    background: #191919;
+    border-radius: 10px;
+
+    border-left: 4px solid #009246;
+}
+
+
+/* =========================
+   BOTÕES DE CONFIRMAÇÃO
+========================= */
+
+.btn-confirmar {
+    width: 100%;
+    margin-top: 20px;
+
+    padding: 17px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #009246;
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   CARRINHO
+========================= */
+
+.item-carrinho {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 15px;
+
+    align-items: center;
+
+    padding: 15px 0;
+    border-bottom: 1px solid #444;
+}
+
+.item-carrinho strong {
+    font-size: 17px;
+}
+
+.item-carrinho small {
+    display: block;
+    color: #bbb;
+    margin-top: 5px;
+}
+
+.item-carrinho p {
+    margin-top: 5px;
+}
+
+.quantidade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantidade button {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #d71920;
+    color: #fff;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.quantidade span {
+    min-width: 25px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.carrinho-vazio {
+    text-align: center;
+    padding: 30px;
+    color: #ccc;
+}
+
+
+/* =========================
+   RECEBIMENTO
+========================= */
+
+.recebimento {
+    margin-top: 25px;
+}
+
+.opcoes-recebimento {
+    display: flex;
+    gap: 10px;
+}
+
+.opcoes-recebimento button {
+    flex: 1;
+    padding: 15px;
+
+    border: 2px solid #444;
+    border-radius: 10px;
+
+    background: #181818;
+    color: #fff;
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.opcoes-recebimento button.ativo {
+    background: #009246;
+    border-color: #fff;
+}
+
+
+/* =========================
+   DADOS DO CLIENTE
+========================= */
+
+.dados-cliente {
+    margin-top: 25px;
+}
+
+.dados-cliente label,
+#campoEndereco label,
+#campoTroco label {
+    display: block;
+    margin: 12px 0 7px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.dados-cliente input,
+.dados-cliente textarea,
+#campoEndereco input,
+#campoTroco input {
+    width: 100%;
+
+    padding: 14px;
+
+    background: #050505;
+    color: #fff;
+
+    border: 2px solid #444;
+    border-radius: 9px;
+
+    font-size: 17px;
+}
+
+.dados-cliente textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+/* =========================
+   PAGAMENTO
+========================= */
+
+.pagamento {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #333;
+}
+
+.pagamento h3 {
+    margin-top: 0;
+}
+
+.opcoes-pagamento {
+    display: flex;
+    gap: 10px;
+}
+
+.opcoes-pagamento button {
+    flex: 1;
+
+    padding: 15px;
+
+    background: #181818;
+    color: #fff;
+
+    border: 2px solid #444;
+    border-radius: 10px;
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.opcoes-pagamento button.ativo {
+    background: #009246;
+    border-color: #fff;
+}
+
+.pagamento-info {
+    margin-top: 15px;
+    padding: 18px;
+
+    background: #181818;
+    border-radius: 10px;
+
+    border-left: 4px solid #d71920;
+}
+
+.pix-chave {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 12px 0;
+}
+
+.pix-chave span {
+    flex: 1;
+
+    padding: 13px;
+
+    background: #000;
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    font-size: 17px;
+    word-break: break-all;
+}
+
+.pix-chave button {
+    padding: 13px;
+
+    background: #009246;
+    color: #fff;
+
+    border: none;
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+.opcoes-cartao,
+.opcoes-troco {
+    display: flex;
+    gap: 10px;
+}
+
+.opcoes-cartao button,
+.opcoes-troco button {
+    flex: 1;
+
+    padding: 14px;
+
+    background: #000;
+    color: #fff;
+
+    border: 2px solid #444;
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.opcoes-cartao button.ativo,
+.opcoes-troco button.ativo {
+    background: #009246;
+    border-color: #fff;
+}
+
+
+/* =========================
+   RESUMO
+========================= */
+
+.resumo {
+    margin-top: 25px;
+    padding-top: 20px;
+
+    border-top: 2px solid #333;
+}
+
+.resumo p {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 7px 0;
+
+    font-size: 17px;
+}
+
+.resumo h2 {
+    margin-top: 15px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #d71920;
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.btn-whatsapp {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 18px;
+
+    background: #25d366;
+    color: #fff;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 19px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    margin-top: 50px;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #050505;
+    border-top: 3px solid #009246;
+}
+
+footer p {
+    margin: 8px;
+    font-size: 17px;
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .inicio h2 {
+        font-size: 30px;
+    }
+
+    .inicio p {
+        font-size: 18px;
+    }
+
+    .cardapio h2 {
+        font-size: 25px;
+    }
+
+    .cardapio button {
+        font-size: 20px;
+        padding: 18px;
+    }
+
+    .produto-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .produto-card > button {
+        width: 100%;
+        padding: 15px;
+        font-size: 17px;
+    }
+
+    .item-carrinho {
+        grid-template-columns: 1fr;
+    }
+
+    .opcoes-pagamento,
+    .opcoes-recebimento,
+    .opcoes-cartao,
+    .opcoes-troco {
+        flex-direction: column;
+    }
+
+    .pix-chave {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pix-chave button {
+        width: 100%;
+    }
+
+    .carrinho-flutuante {
+        right: 10px;
+        bottom: 10px;
+        font-size: 16px;
+    }
+}
