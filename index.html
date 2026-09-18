@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Benvenuto Chicken</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .hidden {
+      display: none !important;
+    }
+  </style>
+
+  <script>
+    function mostrarInicio() {
+      document.getElementById("inicio").classList.remove("hidden");
+      document.getElementById("cardapio").classList.add("hidden");
+      document.getElementById("produtosPagina").classList.add("hidden");
+
+      window.scrollTo(0, 0);
+    }
+
+    function mostrarCardapio() {
+      document.getElementById("inicio").classList.add("hidden");
+      document.getElementById("cardapio").classList.remove("hidden");
+      document.getElementById("produtosPagina").classList.add("hidden");
+
+      window.scrollTo(0, 0);
+    }
+
+    function mostrarProdutos(categoria) {
+      document.getElementById("inicio").classList.add("hidden");
+      document.getElementById("cardapio").classList.add("hidden");
+      document.getElementById("produtosPagina").classList.remove("hidden");
+
+      if (typeof carregarProdutos === "function") {
+        carregarProdutos(categoria);
+      }
+
+      window.scrollTo(0, 0);
+    }
+
+    function voltarCategorias() {
+      document.getElementById("inicio").classList.add("hidden");
+      document.getElementById("produtosPagina").classList.add("hidden");
+      document.getElementById("cardapio").classList.remove("hidden");
+
+      window.scrollTo(0, 0);
+    }
+
+    function voltarInicio() {
+      mostrarInicio();
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- =========================
+       CABEÇALHO
+  ========================== -->
+
+  <header>
+    <div class="logo-area" onclick="mostrarInicio()">
+      <h1>🍗 BENVENUTO</h1>
+      <p>CHICKEN</p>
+    </div>
+
+    <button class="botao-carrinho-topo" onclick="abrirCarrinho()">
+      🛒 <span id="contadorCarrinhoTopo">0</span>
+    </button>
+  </header>
+
+
+  <!-- =========================
+       INÍCIO
+  ========================== -->
+
+  <section id="inicio">
+
+    <div class="hero">
+
+      <div class="hero-imagens">
+
+        <div class="imagem-card">
+          <img
+            src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=700&q=80"
+            alt="Lanche de frango">
+        </div>
+
+        <div class="imagem-card">
+          <img
+            src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=700&q=80"
+            alt="Balde de frango">
+        </div>
+
+        <div class="imagem-card">
+          <img
+            src="https://images.unsplash.com/photo-1629203849820-fdd70d49c38e?auto=format&fit=crop&w=700&q=80"
+            alt="Refrigerante">
+        </div>
+
+      </div>
+
+      <h2>🍗 FRANGO CROCANTE<br>DO JEITO QUE VOCÊ GOSTA!</h2>
+
+      <button class="botao-cardapio" onclick="mostrarCardapio()">
+        🍔 CARDÁPIO
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CATEGORIAS
+  ========================== -->
+
+  <section id="cardapio" class="hidden">
+
+    <div class="titulo-pagina">
+      <button class="botao-voltar" onclick="mostrarInicio()">
+        ← INÍCIO
+      </button>
+
+      <h2>🍗 NOSSO CARDÁPIO</h2>
+
+      <p>Escolha uma categoria:</p>
+    </div>
+
+
+    <div class="categorias">
+
+      <button
+        class="categoria"
+        onclick="mostrarProdutos('lanches')">
+
+        <span>🍔</span>
+
+        <strong>LANCHES</strong>
+
+        <small>Hambúrgueres e Chickens</small>
+
+      </button>
+
+
+      <button
+        class="categoria"
+        onclick="mostrarProdutos('baldes')">
+
+        <span>🍗</span>
+
+        <strong>BALDES</strong>
+
+        <small>Frango crocante</small>
+
+      </button>
+
+
+      <button
+        class="categoria"
+        onclick="mostrarProdutos('combos')">
+
+        <span>🔥</span>
+
+        <strong>COMBOS</strong>
+
+        <small>Combinações especiais</small>
+
+      </button>
+
+
+      <button
+        class="categoria"
+        onclick="mostrarProdutos('bebidas')">
+
+        <span>🥤</span>
+
+        <strong>BEBIDAS</strong>
+
+        <small>Refrigerantes e água</small>
+
+      </button>
+
+
+      <button
+        class="categoria"
+        onclick="mostrarProdutos('porcoes')">
+
+        <span>🍟</span>
+
+        <strong>PORÇÕES</strong>
+
+        <small>Batatas, polenta e muito mais</small>
+
+      </button>
+
+
+      <button
+        class="categoria"
+        onclick="mostrarProdutos('molhos')">
+
+        <span>🥣</span>
+
+        <strong>MOLHOS</strong>
+
+        <small>Escolha seu molho</small>
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PRODUTOS DA CATEGORIA
+  ========================== -->
+
+  <section id="produtosPagina" class="hidden">
+
+    <div class="titulo-produtos">
+
+      <button
+        class="botao-voltar-categorias"
+        onclick="voltarCategorias()">
+
+        ← VOLTAR ÀS CATEGORIAS
+
+      </button>
+
+      <h2 id="tituloCategoria">
+        🍔 LANCHES
+      </h2>
+
+    </div>
+
+
+    <div id="listaProdutos">
+
+      <!-- Os produtos serão colocados pelo script.js -->
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CARRINHO
+  ========================== -->
+
+  <div
+    id="carrinhoModal"
+    class="modal hidden">
+
+    <div class="modal-conteudo">
+
+      <button
+        class="fechar-modal"
+        onclick="fecharCarrinho()">
+
+        ✕
+
+      </button>
+
+      <h2>🛒 SEU CARRINHO</h2>
+
+      <div id="itensCarrinho">
+
+        <p class="carrinho-vazio">
+          Seu carrinho está vazio.
+        </p>
+
+      </div>
+
+      <div class="total-carrinho">
+
+        <strong>TOTAL:</strong>
+
+        <strong id="totalCarrinho">
+          R$ 0,00
+        </strong>
+
+      </div>
+
+
+      <!-- ENTREGA / RETIRADA -->
+
+      <div class="entrega-area">
+
+        <h3>📍 COMO VOCÊ VAI RECEBER?</h3>
+
+        <button
+          id="btnRetirada"
+          class="opcao-entrega"
+          onclick="selecionarEntrega('retirada')">
+
+          🏪 RETIRADA
+          <small>Sem taxa</small>
+
+        </button>
+
+
+        <button
+          id="btnEntrega"
+          class="opcao-entrega"
+          onclick="selecionarEntrega('entrega')">
+
+          🛵 ENTREGA
+          <small>+ R$ 4,00</small>
+
+        </button>
+
+      </div>
+
+
+      <!-- PAGAMENTO -->
+
+      <div class="pagamento-area">
+
+        <h3>💳 FORMA DE PAGAMENTO</h3>
+
+        <button
+          class="opcao-pagamento"
+          onclick="selecionarPagamento('Dinheiro')">
+
+          💵 DINHEIRO
+
+        </button>
+
+
+        <button
+          class="opcao-pagamento"
+          onclick="selecionarPagamento('Crédito')">
+
+          💳 CRÉDITO
+
+        </button>
+
+
+        <button
+          class="opcao-pagamento"
+          onclick="selecionarPagamento('Débito')">
+
+          💳 DÉBITO
+
+        </button>
+
+
+        <button
+          class="opcao-pagamento"
+          onclick="selecionarPagamento('PIX')">
+
+          📱 PIX
+
+        </button>
+
+
+        <div
+          id="pixInfo"
+          class="pix-info hidden">
+
+          <strong>CHAVE PIX:</strong>
+
+          <span>64213198000174</span>
+
+        </div>
+
+
+        <div
+          id="trocoArea"
+          class="troco-area hidden">
+
+          <h3>💵 PRECISA DE TROCO?</h3>
+
+          <button
+            onclick="selecionarTroco('nao')">
+
+            NÃO
+
+          </button>
+
+          <button
+            onclick="selecionarTroco('sim')">
+
+            SIM
+
+          </button>
+
+
+          <div
+            id="valorTrocoArea"
+            class="hidden">
+
+            <label for="valorTroco">
+              Troco para quanto?
+            </label>
+
+            <input
+              id="valorTroco"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Ex.: 50,00">
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FINALIZAR -->
+
+      <button
+        class="botao-finalizar"
+        onclick="finalizarPedido()">
+
+        📲 FINALIZAR PEDIDO NO WHATSAPP
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       BOTÃO FIXO DO CARRINHO
+  ========================== -->
+
+  <button
+    id="botaoCarrinho"
+    class="botao-carrinho-fixo"
+    onclick="abrirCarrinho()">
+
+    🛒 VER CARRINHO
+
+    <span id="contadorCarrinho">
+      0
+    </span>
+
+  </button>
+
+
+  <!-- =========================
+       MODAL DE PRODUTO
+  ========================== -->
+
+  <div
+    id="produtoModal"
+    class="modal hidden">
+
+    <div class="modal-conteudo produto-modal">
+
+      <button
+        class="fechar-modal"
+        onclick="fecharProduto()">
+
+        ✕
+
+      </button>
+
+      <h2 id="produtoNome"></h2>
+
+      <p id="produtoDescricao"></p>
+
+      <div class="produto-preco">
+        R$ <span id="produtoPreco"></span>
+      </div>
+
+
+      <!-- OPÇÕES DO PRODUTO -->
+
+      <div id="opcoesProduto"></div>
+
+
+      <!-- ADICIONAIS -->
+
+      <div id="adicionaisProduto">
+
+        <h3>➕ ADICIONAIS</h3>
+
+      </div>
+
+
+      <div class="quantidade-area">
+
+        <button onclick="alterarQuantidade(-1)">
+          −
+        </button>
+
+        <span id="quantidadeProduto">
+          1
+        </span>
+
+        <button onclick="alterarQuantidade(1)">
+          +
+        </button>
+
+      </div>
+
+
+      <button
+        class="botao-adicionar"
+        onclick="adicionarAoCarrinho()">
+
+        🛒 ADICIONAR AO CARRINHO
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="script.js"></script>
+
+
+  <!-- Inicialização -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      mostrarInicio();
+    });
+  </script>
+
+</body>
+</html>
