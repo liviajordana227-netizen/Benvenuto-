@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta name="theme-color" content="#050505">
+
+    <title>Benvenuto Chicken</title>
+
+    <link rel="stylesheet" href="style.css?v=2">
+
+</head>
+
+<body>
+
+
+    <!-- =====================================================
+         TELA INICIAL
+    ====================================================== -->
+
+    <section id="inicio" class="tela ativa">
+
+        <div class="inicio-conteudo">
+
+            <h1>🍗 BENVENUTO CHICKEN</h1>
+
+            <p class="subtitulo">
+                Frango crocante, lanches e muito sabor!
+            </p>
+
+
+            <div class="imagens-inicio">
+
+                <div class="imagem-inicio">
+                    <img
+                        src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=85"
+                        alt="Lanche"
+                    >
+                </div>
+
+                <div class="imagem-inicio">
+                    <img
+                        src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=800&q=85"
+                        alt="Frango frito"
+                    >
+                </div>
+
+                <div class="imagem-inicio">
+                    <img
+                        src="https://images.unsplash.com/photo-1629203849820-fdd70d49c38e?auto=format&fit=crop&w=800&q=85"
+                        alt="Refrigerante"
+                    >
+                </div>
+
+            </div>
+
+
+            <button
+                class="btn-cardapio"
+                onclick="abrirCardapio()"
+            >
+                CARDÁPIO
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TELA DE CATEGORIAS
+    ====================================================== -->
+
+    <section id="cardapio" class="tela">
+
+        <div class="cabecalho">
+
+            <h1>🍽️ CARDÁPIO</h1>
+
+            <p>
+                Escolha uma categoria
+            </p>
+
+        </div>
+
+
+        <div id="categorias" class="categorias">
+
+            <button
+                class="categoria-btn"
+                onclick="abrirCategoria('lanches')"
+            >
+                🍔 LANCHES
+            </button>
+
+            <button
+                class="categoria-btn"
+                onclick="abrirCategoria('baldes')"
+            >
+                🍗 BALDES
+            </button>
+
+            <button
+                class="categoria-btn"
+                onclick="abrirCategoria('combos')"
+            >
+                🔥 COMBOS
+            </button>
+
+            <button
+                class="categoria-btn"
+                onclick="abrirCategoria('bebidas')"
+            >
+                🥤 BEBIDAS
+            </button>
+
+            <button
+                class="categoria-btn"
+                onclick="abrirCategoria('porcoes')"
+            >
+                🍟 PORÇÕES
+            </button>
+
+            <button
+                class="categoria-btn"
+                onclick="abrirCategoria('molhos')"
+            >
+                🥣 MOLHOS
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TELA DE PRODUTOS
+    ====================================================== -->
+
+    <section id="produtos" class="tela">
+
+        <div class="topo-produtos">
+
+            <button
+                class="btn-voltar"
+                onclick="voltarCategorias()"
+            >
+                ← VOLTAR ÀS CATEGORIAS
+            </button>
+
+            <h1 id="tituloCategoria">
+                CARDÁPIO
+            </h1>
+
+        </div>
+
+
+        <div id="listaProdutos" class="lista-produtos"></div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BOTÃO FIXO DO CARRINHO
+    ====================================================== -->
+
+    <button
+        id="botaoCarrinho"
+        class="botao-carrinho"
+        onclick="abrirCarrinho()"
+    >
+
+        🛒
+
+        <span>
+            VER CARRINHO
+        </span>
+
+        <strong id="quantidadeCarrinho">
+            0
+        </strong>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         MODAL DO PRODUTO
+    ====================================================== -->
+
+    <div
+        id="modalProduto"
+        class="modal"
+    >
+
+        <div class="modal-conteudo">
+
+            <button
+                class="fechar"
+                onclick="fecharProduto()"
+            >
+                ✕
+            </button>
+
+
+            <h2 id="modalTitulo">
+                Produto
+            </h2>
+
+
+            <p id="modalDescricao">
+            </p>
+
+
+            <div class="modal-preco">
+
+                R$
+
+                <span id="modalPreco">
+                    0,00
+                </span>
+
+            </div>
+
+
+            <!-- OPÇÕES ESPECÍFICAS DO PRODUTO -->
+
+            <div id="opcoesProduto"></div>
+
+
+            <!-- ADICIONAIS DOS LANCHES -->
+
+            <div
+                id="adicionaisProduto"
+                class="adicionais-produto"
+            >
+            </div>
+
+
+            <!-- QUANTIDADE -->
+
+            <div class="campo-quantidade">
+
+                <label>
+                    QUANTIDADE
+                </label>
+
+                <div class="controle-quantidade">
+
+                    <button
+                        type="button"
+                        onclick="alterarQuantidade(-1)"
+                    >
+                        −
+                    </button>
+
+                    <span id="quantidadeProduto">
+                        1
+                    </span>
+
+                    <button
+                        type="button"
+                        onclick="alterarQuantidade(1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="btn-adicionar"
+                onclick="confirmarProduto()"
+            >
+                🛒 ADICIONAR AO CARRINHO
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MODAL DO CARRINHO
+    ====================================================== -->
+
+    <div
+        id="modalCarrinho"
+        class="modal"
+    >
+
+        <div class="modal-conteudo carrinho-conteudo">
+
+            <button
+                class="fechar"
+                onclick="fecharCarrinho()"
+            >
+                ✕
+            </button>
+
+
+            <h2>
+                🛒 SEU CARRINHO
+            </h2>
+
+
+            <!-- LISTA DOS PRODUTOS -->
+
+            <div id="listaCarrinho"></div>
+
+
+            <!-- VALORES -->
+
+            <div class="resumo-pedido">
+
+                <div class="linha-total">
+
+                    <span>
+                        Subtotal:
+                    </span>
+
+                    <strong id="subtotal">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+
+                <div class="linha-total">
+
+                    <span>
+                        Taxa de entrega:
+                    </span>
+
+                    <strong id="taxaEntrega">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+
+                <div class="linha-total total-final">
+
+                    <span>
+                        TOTAL:
+                    </span>
+
+                    <strong id="total">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TIPO DO PEDIDO
+            ================================================== -->
+
+            <div class="secao-formulario">
+
+                <h3>
+                    📦 COMO VOCÊ QUER RECEBER?
+                </h3>
+
+
+                <label class="opcao-grande">
+
+                    <input
+                        type="radio"
+                        name="tipoPedido"
+                        value="Entrega"
+                        onchange="mudarTipoPedido()"
+                    >
+
+                    🚚 ENTREGA
+
+                </label>
+
+
+                <label class="opcao-grande">
+
+                    <input
+                        type="radio"
+                        name="tipoPedido"
+                        value="Retirada"
+                        onchange="mudarTipoPedido()"
+                    >
+
+                    🏪 RETIRADA
+
+                </label>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DADOS DO CLIENTE
+            ================================================== -->
+
+            <div class="secao-formulario">
+
+                <h3>
+                    👤 DADOS DO CLIENTE
+                </h3>
+
+
+                <label for="nomeCliente">
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="nomeCliente"
+                    placeholder="Digite seu nome"
+                >
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DADOS DE ENTREGA
+            ================================================== -->
+
+            <div
+                id="dadosEntrega"
+                class="secao-formulario"
+                style="display:none;"
+            >
+
+                <h3>
+                    📍 ENDEREÇO
+                </h3>
+
+
+                <label for="ruaCliente">
+                    Rua e número
+                </label>
+
+                <input
+                    type="text"
+                    id="ruaCliente"
+                    placeholder="Digite sua rua e número"
+                >
+
+
+                <label for="bairroCliente">
+                    Bairro
+                </label>
+
+                <input
+                    type="text"
+                    id="bairroCliente"
+                    placeholder="Digite seu bairro"
+                >
+
+            </div>
+
+
+
+            <!-- =================================================
+                 OBSERVAÇÃO
+            ================================================== -->
+
+            <div class="secao-formulario">
+
+                <label for="observacaoCliente">
+                    📝 OBSERVAÇÃO
+                </label>
+
+                <textarea
+                    id="observacaoCliente"
+                    placeholder="Alguma observação sobre o pedido?"
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PAGAMENTO
+            ================================================== -->
+
+            <div class="secao-formulario">
+
+                <h3>
+                    💳 FORMA DE PAGAMENTO
+                </h3>
+
+
+                <label class="opcao-grande">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="Dinheiro"
+                        onchange="mostrarPagamento()"
+                    >
+
+                    💵 DINHEIRO
+
+                </label>
+
+
+                <label class="opcao-grande">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="Crédito"
+                        onchange="mostrarPagamento()"
+                    >
+
+                    💳 CRÉDITO
+
+                </label>
+
+
+                <label class="opcao-grande">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="Débito"
+                        onchange="mostrarPagamento()"
+                    >
+
+                    💳 DÉBITO
+
+                </label>
+
+
+                <label class="opcao-grande">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="PIX"
+                        onchange="mostrarPagamento()"
+                    >
+
+                    🟢 PIX
+
+                </label>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ÁREA DINÂMICA DO PAGAMENTO
+            ================================================== -->
+
+            <div id="dadosPagamento"></div>
+
+
+
+            <!-- =================================================
+                 FINALIZAR
+            ================================================== -->
+
+            <button
+                class="btn-finalizar"
+                onclick="enviarWhatsApp()"
+            >
+                📲 FINALIZAR PEDIDO NO WHATSAPP
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js?v=2"></script>
+
+</body>
+
+</html>
