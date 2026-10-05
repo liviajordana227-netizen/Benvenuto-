@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benvenuto Chicken</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- INÍCIO -->
+  <section id="inicio" class="tela ativa">
+    <div class="hero">
+
+      <div class="hero-imagens">
+        <img
+          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+          alt="Lanche"
+        >
+
+        <img
+          src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=900&q=85"
+          alt="Frango"
+        >
+
+        <img
+          src="https://images.unsplash.com/photo-1629203849820-fdd70d49c38e?auto=format&fit=crop&w=900&q=85"
+          alt="Refrigerante"
+        >
+      </div>
+
+      <h1>BENVENUTO<br>CHICKEN</h1>
+
+      <button class="btn-cardapio" onclick="abrirCardapio()">
+        CARDÁPIO
+      </button>
+
+    </div>
+  </section>
+
+
+  <!-- CATEGORIAS -->
+  <section id="categorias" class="tela">
+
+    <header class="topo">
+      <h1>🍗 BENVENUTO CHICKEN</h1>
+      <p>Escolha uma categoria</p>
+    </header>
+
+    <main class="categorias">
+
+      <button class="categoria" onclick="abrirCategoria('lanches')">
+        🍔
+        <span>LANCHES</span>
+      </button>
+
+      <button class="categoria" onclick="abrirCategoria('baldes')">
+        🍗
+        <span>BALDES DE TULIPA</span>
+      </button>
+
+      <button class="categoria" onclick="abrirCategoria('combos')">
+        🔥
+        <span>COMBOS</span>
+      </button>
+
+      <button class="categoria" onclick="abrirCategoria('bebidas')">
+        🥤
+        <span>BEBIDAS</span>
+      </button>
+
+      <button class="categoria" onclick="abrirCategoria('porcoes')">
+        🍟
+        <span>PORÇÕES</span>
+      </button>
+
+      <button class="categoria" onclick="abrirCategoria('molhos')">
+        🥣
+        <span>MOLHOS</span>
+      </button>
+
+    </main>
+
+  </section>
+
+
+  <!-- PRODUTOS -->
+  <section id="produtos" class="tela">
+
+    <header class="topo-produtos">
+
+      <button class="voltar" onclick="voltarCategorias()">
+        ← VOLTAR ÀS CATEGORIAS
+      </button>
+
+      <h1 id="tituloCategoria">Produtos</h1>
+
+    </header>
+
+    <main id="listaProdutos" class="lista-produtos"></main>
+
+  </section>
+
+
+  <!-- MODAL LANCHES -->
+  <div id="modalLanche" class="modal">
+    <div class="modal-caixa">
+
+      <button class="fechar" onclick="fecharModal('modalLanche')">×</button>
+
+      <h2 id="nomeLancheModal"></h2>
+
+      <p class="modal-subtitulo">
+        Escolha os adicionais que deseja
+      </p>
+
+      <div id="listaAdicionais"></div>
+
+      <button class="btn-confirmar" onclick="confirmarLanche()">
+        ADICIONAR AO CARRINHO
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- MODAL BALDE FRITAS -->
+  <div id="modalBalde" class="modal">
+    <div class="modal-caixa">
+
+      <button class="fechar" onclick="fecharModal('modalBalde')">×</button>
+
+      <h2 id="nomeBaldeModal"></h2>
+
+      <p class="modal-subtitulo">
+        Escolha o acompanhamento
+      </p>
+
+      <button class="opcao-grande" onclick="selecionarAcompanhamento('Batata Frita')">
+        🍟 Batata Frita
+      </button>
+
+      <button class="opcao-grande" onclick="selecionarAcompanhamento('Polenta Frita')">
+        🟨 Polenta Frita
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- CARRINHO -->
+  <div id="modalCarrinho" class="modal">
+
+    <div class="modal-caixa carrinho-caixa">
+
+      <button class="fechar" onclick="fecharModal('modalCarrinho')">
+        ×
+      </button>
+
+      <h2>🛒 Seu Carrinho</h2>
+
+      <div id="itensCarrinho"></div>
+
+      <div class="total-carrinho">
+        <span>Total:</span>
+        <strong id="totalCarrinho">R$ 0,00</strong>
+      </div>
+
+      <button class="btn-confirmar" onclick="abrirFinalizacao()">
+        FINALIZAR PEDIDO
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- FINALIZAÇÃO -->
+  <div id="modalFinalizacao" class="modal">
+
+    <div class="modal-caixa">
+
+      <button class="fechar" onclick="fecharModal('modalFinalizacao')">
+        ×
+      </button>
+
+      <h2>📦 Finalizar Pedido</h2>
+
+      <label>Nome</label>
+      <input id="nomeCliente" type="text" placeholder="Seu nome">
+
+      <h3>Como vai receber?</h3>
+
+      <button
+        id="btnRetirada"
+        class="tipo-entrega"
+        onclick="selecionarEntrega('Retirada')">
+        🏪 RETIRADA
+      </button>
+
+      <button
+        id="btnEntrega"
+        class="tipo-entrega"
+        onclick="selecionarEntrega('Entrega')">
+        🛵 ENTREGA + R$ 4,00
+      </button>
+
+      <div id="dadosEntrega" class="escondido">
+
+        <label>Rua</label>
+        <input id="rua" type="text" placeholder="Nome da rua">
+
+        <label>Bairro</label>
+        <input id="bairro" type="text" placeholder="Seu bairro">
+
+        <label>Observação</label>
+        <textarea
+          id="observacao"
+          placeholder="Número da casa, referência etc."
+        ></textarea>
+
+      </div>
+
+
+      <h3>Forma de pagamento</h3>
+
+      <button class="pagamento" onclick="selecionarPagamento('Dinheiro')">
+        💵 DINHEIRO
+      </button>
+
+      <button class="pagamento" onclick="selecionarPagamento('Crédito')">
+        💳 CRÉDITO
+      </button>
+
+      <button class="pagamento" onclick="selecionarPagamento('Débito')">
+        💳 DÉBITO
+      </button>
+
+      <button class="pagamento" onclick="selecionarPagamento('PIX')">
+        🟢 PIX
+      </button>
+
+      <div id="dadosDinheiro" class="escondido">
+
+        <h3>Precisa de troco?</h3>
+
+        <button class="troco-btn" onclick="selecionarTroco('Não')">
+          NÃO
+        </button>
+
+        <button class="troco-btn" onclick="selecionarTroco('Sim')">
+          SIM
+        </button>
+
+        <div id="campoTroco" class="escondido">
+
+          <label>Troco para quanto?</label>
+
+          <input
+            id="trocoPara"
+            type="number"
+            step="0.01"
+            placeholder="Ex.: 50"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div id="pixInfo" class="pix-info escondido">
+
+        <strong>Chave PIX:</strong>
+
+        <div class="pix-chave">
+          64213198000174
+
+          <button onclick="copiarPix()">
+            COPIAR
+          </button>
+        </div>
+
+      </div>
+
+
+      <div class="resumo-final">
+
+        <span>Total do pedido:</span>
+
+        <strong id="totalFinal">
+          R$ 0,00
+        </strong>
+
+      </div>
+
+
+      <button class="btn-whatsapp" onclick="enviarPedido()">
+        📲 ENVIAR PEDIDO NO WHATSAPP
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- BOTÃO CARRINHO -->
+  <button id="botaoCarrinho" onclick="abrirCarrinho()">
+    🛒 VER CARRINHO
+    <span id="quantidadeCarrinho">0</span>
+  </button>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
