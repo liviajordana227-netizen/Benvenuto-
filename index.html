@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
+  <title>Benvenuto Chicken</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <section id="inicio" class="screen home-screen">
+    <div class="home-content">
+
+      <div class="brand">
+        <div class="brand-line"></div>
+        <h1>BENVENUTO <span>CHICKEN</span></h1>
+        <p>Sabor que conquista! 🍗</p>
+      </div>
+
+      <div class="hero-images">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=85" alt="Lanche">
+        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=700&q=85" alt="Frango frito">
+        <img src="https://images.unsplash.com/photo-1629203849820-fdd70d49c38e?auto=format&fit=crop&w=700&q=85" alt="Refrigerante">
+      </div>
+
+      <button class="main-button" type="button" onclick="abrirCardapio()">
+        🍗 CARDÁPIO
+      </button>
+
+    </div>
+  </section>
+
+
+  <section id="categorias" class="screen categories-screen hidden">
+
+    <div class="section-title">
+      <h2>🍗 NOSSO CARDÁPIO</h2>
+      <p>Escolha uma categoria</p>
+    </div>
+
+    <div class="category-grid">
+
+      <button type="button" onclick="abrirCategoria('lanches')">
+        🍔
+        <strong>LANCHES</strong>
+      </button>
+
+      <button type="button" onclick="abrirCategoria('tulipa')">
+        🍗
+        <strong>BALDES DE TULIPA</strong>
+      </button>
+
+      <button type="button" onclick="abrirCategoria('combos')">
+        🔥
+        <strong>COMBOS</strong>
+      </button>
+
+      <button type="button" onclick="abrirCategoria('bebidas')">
+        🥤
+        <strong>BEBIDAS</strong>
+      </button>
+
+      <button type="button" onclick="abrirCategoria('porcoes')">
+        🍟
+        <strong>PORÇÕES</strong>
+      </button>
+
+      <button type="button" onclick="abrirCategoria('molhos')">
+        🥣
+        <strong>MOLHOS</strong>
+      </button>
+
+    </div>
+
+    <button class="cart-fixed" type="button" onclick="abrirCarrinho()">
+      🛒 <span>VER CARRINHO</span>
+      <b id="cart-count-home">0</b>
+    </button>
+
+  </section>
+
+
+  <section id="produtos" class="screen products-screen hidden">
+
+    <button class="back-button" type="button" onclick="voltarCategorias()">
+      ← VOLTAR ÀS CATEGORIAS
+    </button>
+
+    <div id="lista-produtos" class="products-list"></div>
+
+    <button class="cart-fixed" type="button" onclick="abrirCarrinho()">
+      🛒 <span>VER CARRINHO</span>
+      <b id="cart-count-products">0</b>
+    </button>
+
+  </section>
+
+
+  <section id="carrinho" class="screen cart-screen hidden">
+
+    <button class="back-button" type="button" onclick="fecharCarrinho()">
+      ← VOLTAR
+    </button>
+
+    <div class="section-title">
+      <h2>🛒 SEU CARRINHO</h2>
+    </div>
+
+    <div id="lista-carrinho" class="cart-list"></div>
+
+    <div class="summary">
+
+      <div>
+        <span>Subtotal</span>
+        <strong id="subtotal">R$ 0,00</strong>
+      </div>
+
+      <div>
+        <span>Taxa de entrega</span>
+        <strong id="taxa-entrega">R$ 0,00</strong>
+      </div>
+
+      <div class="total-row">
+        <span>TOTAL</span>
+        <strong id="total-final">R$ 0,00</strong>
+      </div>
+
+    </div>
+
+
+    <div class="checkout">
+
+      <h2>📋 FINALIZAR PEDIDO</h2>
+
+      <label for="nome">Seu nome</label>
+      <input id="nome" type="text" placeholder="Digite seu nome">
+
+
+      <h3>📦 Como deseja receber?</h3>
+
+      <div class="choice-grid">
+
+        <button
+          type="button"
+          class="opcao-entrega"
+          onclick="selecionarEntrega('retirada', this)">
+          🏪 RETIRADA
+        </button>
+
+        <button
+          type="button"
+          class="opcao-entrega"
+          onclick="selecionarEntrega('entrega', this)">
+          🛵 ENTREGA
+        </button>
+
+      </div>
+
+
+      <div id="endereco" class="hidden-box">
+
+        <label for="rua">Rua / Número</label>
+        <input
+          id="rua"
+          type="text"
+          placeholder="Ex.: Rua das Flores, 123">
+
+        <label for="bairro">Bairro</label>
+        <input
+          id="bairro"
+          type="text"
+          placeholder="Digite seu bairro">
+
+      </div>
+
+
+      <h3>💳 Forma de pagamento</h3>
+
+      <div class="choice-grid payment-grid">
+
+        <button
+          type="button"
+          class="opcao-pagamento"
+          onclick="selecionarPagamento('Dinheiro', this)">
+          💵 DINHEIRO
+        </button>
+
+        <button
+          type="button"
+          class="opcao-pagamento"
+          onclick="selecionarPagamento('Crédito', this)">
+          💳 CRÉDITO
+        </button>
+
+        <button
+          type="button"
+          class="opcao-pagamento"
+          onclick="selecionarPagamento('Débito', this)">
+          💳 DÉBITO
+        </button>
+
+        <button
+          type="button"
+          class="opcao-pagamento"
+          onclick="selecionarPagamento('PIX', this)">
+          💚 PIX
+        </button>
+
+      </div>
+
+
+      <div id="campo-troco" class="hidden-box">
+
+        <h3>💵 Precisa de troco?</h3>
+
+        <div class="choice-grid">
+
+          <button type="button" onclick="definirTroco('Não')">
+            NÃO
+          </button>
+
+          <button type="button" onclick="mostrarCampoTroco()">
+            SIM
+          </button>
+
+        </div>
+
+
+        <div id="troco-valor" class="hidden-box">
+
+          <label for="troco-input">
+            Troco para quanto?
+          </label>
+
+          <input
+            id="troco-input"
+            type="text"
+            placeholder="Ex.: R$ 50,00"
+            oninput="definirTroco(this.value)">
+
+        </div>
+
+      </div>
+
+
+      <div id="dados-pix" class="pix-box hidden-box">
+
+        <h3>💚 PAGAMENTO VIA PIX</h3>
+
+        <p>Chave PIX:</p>
+
+        <strong>64213198000174</strong>
+
+        <p>
+          Faça o pagamento e envie o comprovante pelo WhatsApp.
+        </p>
+
+      </div>
+
+
+      <label for="observacao">Observação</label>
+
+      <textarea
+        id="observacao"
+        rows="4"
+        placeholder="Alguma observação sobre seu pedido?"></textarea>
+
+
+      <button
+        class="whatsapp-button"
+        type="button"
+        onclick="enviarPedido()">
+
+        📲 ENVIAR PEDIDO PELO WHATSAPP
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <div id="modal" class="modal hidden"></div>
+
+  <div id="toast" class="toast"></div>
+
+
+  <footer>
+    🍗 <strong>Benvenuto Chicken</strong>
+    • Sabor que conquista ❤️
+  </footer>
+
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- SEU JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
