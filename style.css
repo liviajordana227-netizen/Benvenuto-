@@ -1,0 +1,107 @@
+
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:#fff;font-family:Arial,sans-serif}
+button,input,textarea{font:inherit}
+.hidden{display:none!important}
+header{background:#111;border-bottom:5px solid transparent;border-image:linear-gradient(to right,#159447 33%,white 33%,white 66%,#e1252d 66%) 1;padding:18px;text-align:center;position:sticky;top:0;z-index:10}
+header h1{margin:0;font-size:28px}
+nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+nav button,.primary,.botao-adicionar,.controles button,.recebimento button{border:0;border-radius:12px;padding:12px 15px;font-weight:800;cursor:pointer;background:#e1252d;color:#fff}
+nav button:nth-child(2n){background:#159447}
+main{max-width:1100px;width:94%;margin:auto}
+.hero{text-align:center;padding:42px 10px 30px}
+.hero h2{font-size:38px;margin:10px 0}
+.hero p{font-size:20px;color:#ddd}
+.hero-photos{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:20px 0}
+.photo{width:30%;min-width:190px;height:150px;border-radius:20px;background:#151515;display:flex;align-items:center;justify-content:center;font-size:70px;border:2px solid #333}
+.primary{font-size:24px;padding:17px 35px;background:#e1252d}
+.info{text-align:center;font-size:19px;padding:10px}
+.categorias{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:25px 0 60px}
+.categoria{min-height:105px;background:#111;border:2px solid #333;border-radius:18px;color:#fff;font-size:22px;font-weight:900;cursor:pointer}
+.categoria:nth-child(odd){border-left:6px solid #159447}
+.categoria:nth-child(even){border-right:6px solid #e1252d}
+#produtosPagina{padding:25px 0 80px}
+.voltar{background:#333;color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:bold;cursor:pointer}
+#tituloCategoria{font-size:34px;margin-bottom:5px}
+#descricaoCategoria{color:#ccc;font-size:18px}
+.lista-produtos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.produto{background:#111;border:2px solid #333;border-radius:18px;padding:20px}
+.produto h2{font-size:24px;margin:0 0 10px}
+.produto-descricao{color:#ccc;line-height:1.4}
+.produto-preco{font-size:23px;font-weight:900;margin:15px 0}
+.botao-adicionar{width:100%;font-size:18px}
+.carrinho-fixo{position:fixed;right:18px;bottom:18px;z-index:20;background:#e1252d;color:white;border:0;border-radius:50px;padding:16px 22px;font-weight:900;box-shadow:0 4px 20px #000}
+.pagamentos{width:100%;margin:35px auto 60px;padding:30px 20px;text-align:center;background:#111;border:2px solid #333;border-radius:25px;position:relative;overflow:hidden}
+.pagamentos:before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(to right,#159447 33.33%,white 33.33%,white 66.66%,#e1252d 66.66%)}
+.pagamentos h2{margin-top:10px;font-size:32px}
+.pagamento-subtitulo{color:#ccc;font-size:18px}
+.formas-pagamento{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:25px}
+.pagamento{min-height:120px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;background:#1b1b1b;border:2px solid #333;border-radius:17px;font-size:18px;cursor:pointer}
+.pagamento span{font-size:38px}
+.detalhes-pagamento{margin-top:25px;padding:22px;background:#1b1b1b;border:2px solid #333;border-radius:17px;text-align:left}
+.detalhes-pagamento h3{margin-top:0;font-size:22px}
+.opcoes-troco{display:flex;gap:15px;flex-wrap:wrap;margin:15px 0}
+.opcao-troco{display:flex;align-items:center;gap:8px;font-size:18px}
+.opcao-troco input{width:20px;height:20px}
+.campo-troco{width:100%;max-width:300px;padding:14px;border-radius:10px;border:2px solid #444;background:#080808;color:#fff;font-size:18px}
+.pix-chave{margin-top:15px;padding:18px;background:#080808;border:2px dashed #159447;border-radius:12px}
+.pix-chave strong{display:block;font-size:22px;margin:8px 0 15px;word-break:break-all}
+.botao-copiar-pix{background:#159447;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-size:17px;font-weight:bold;cursor:pointer}
+.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;z-index:30;padding:15px}
+.modal-box{width:min(650px,100%);max-height:90vh;overflow:auto;background:#111;border:2px solid #444;border-radius:20px;padding:25px}
+.modal-box h2{font-size:28px}
+.escolhas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.escolha-frango{background:#222;color:#fff;border:2px solid #444;border-radius:12px;padding:15px;font-weight:bold;cursor:pointer}
+.escolha-frango.selecionado{border-color:#e1252d;background:#3a1114}
+.misto-opcao{display:block;padding:10px;font-size:18px}
+.adicional{display:flex;justify-content:space-between;padding:12px;border-bottom:1px solid #333;font-size:17px}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.modal-actions button{flex:1;padding:14px;border:0;border-radius:12px;font-weight:bold;cursor:pointer}
+.confirmar{background:#159447;color:#fff}
+.fechar{background:#444;color:#fff}
+.item{border-bottom:1px solid #333;padding:15px 0}
+.item h3{margin:0 0 6px}
+.item p{color:#ccc}
+.controles{display:flex;align-items:center;gap:14px;margin-top:10px}
+.controles button{padding:7px 13px;background:#e1252d}
+.resumo{margin-top:20px;border-top:2px solid #333;padding-top:15px;font-size:18px}
+.recebimento{display:flex;gap:10px;margin:15px 0}
+.recebimento button{flex:1;background:#333}
+.recebimento button.ativo{background:#159447}
+.form-field{width:100%;margin:8px 0 14px;padding:14px;border-radius:10px;border:2px solid #444;background:#080808;color:#fff}
+#campoEndereco{display:block}
+footer{text-align:center;padding:30px;color:#aaa}
+
+@media(max-width:700px){
+ .hero h2{font-size:30px}
+ .categorias,.lista-produtos{grid-template-columns:1fr}
+ .formas-pagamento{grid-template-columns:1fr 1fr}
+ .photo{width:45%}
+ .escolhas{grid-template-columns:1fr}
+}
+
+/* Tela inicial limpa e categorias verticais */
+header nav{display:none!important}
+#inicio{min-height:calc(100svh - 92px);display:flex;flex-direction:column;justify-content:center;padding-bottom:8px}
+#inicio .hero{padding:18px 10px 8px}
+#inicio .hero h2{margin-top:0}
+#inicio .hero-photos{margin:14px 0 18px}
+#inicio .photo{height:clamp(95px,17vh,150px)}
+#inicio .primary{min-width:min(82vw,360px);min-height:64px;font-size:25px}
+.telefone-inicio{font-size:13px;color:#aaa;padding:7px 0 12px;margin-top:4px}
+#cardapio .hero{padding:20px 10px 8px}
+#cardapio .categorias{display:flex;flex-direction:column;gap:12px;margin:18px 0 35px}
+#cardapio .categoria{width:100%;min-height:76px;text-align:left;padding:18px 22px;font-size:21px}
+#secaoPagamentos{margin-top:35px}
+.escolha-combo{background:#222;color:#fff;border:2px solid #444;border-radius:12px;padding:15px;font-weight:bold;cursor:pointer}
+.escolha-combo.selecionado{border-color:#e1252d;background:#3a1114}
+
+@media(max-width:700px){
+ #inicio{min-height:calc(100svh - 75px)}
+ #inicio .hero{padding-top:10px}
+ #inicio .hero h2{font-size:28px}
+ #inicio .hero p{font-size:17px;margin:8px 0}
+ #inicio .photo{min-width:0;width:29%;height:105px;font-size:48px}
+ #inicio .hero-photos{gap:8px}
+ #cardapio .categoria{min-height:70px;font-size:19px}
+}
