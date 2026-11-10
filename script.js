@@ -17,107 +17,100 @@ let enviandoPedido = false;
 
 const cardapio = {
   lanches: [
-    ["X-Burguer", "Pão, hambúrguer, queijo e molho de alho.", 19],
-    ["Pop Chicken", "Pão, Sassami, catupiry e molho de alho.", 22],
-    ["Chicken", "Pão, Sassami, alface, tomate, cebola e molho de alho.", 26],
-    ["X-Calabresa", "Pão, molho de alho, queijo, calabresa, hambúrguer, alface, tomate e cebola.", 27],
-    ["X-Bacon", "Pão, muçarela, hambúrguer, creme de alho, bacon e catupiry.", 27],
-    ["X-Salada", "Pão, hambúrguer, molho de alho, alface, tomate e cebola.", 25],
-    ["X-Rings", "Pão, hambúrguer, 3 anéis de cebola, muçarela, alface, cebola e molho de alho.", 27],
-    ["Especial Duplo Cheddar", "Pão, 2 hambúrgueres, cheddar, bacon, molho de alho e cebola caramelizada.", 37],
-    ["Duplo Cheddar", "Pão, cheddar, 2 hambúrgueres, bacon e molho de alho.", 33],
-    ["Americano", "Pão, tomate, alface, cebola, pepino, Sassami, cheddar e molho de alho.", 28],
-    ["Combo Individual de Lanche", "1 Chicken + 300 g de batata + refrigerante 220 ml.", 40],
-    ["Combo Duo de Lanche", "2 Chickens + 500 g de batata + 2 refrigerantes 220 ml.", 72],
-    ["Combo Trio de Lanche", "3 Chickens + 500 g de batata + 3 refrigerantes 220 ml.", 80],
-    ["Combo Família de Lanche", "5 Chickens + 1 kg de batata + refrigerante 2 L.", 110],
-    ["Combo Especial Duplo Cheddar — Duo", "2 Especial Duplo Cheddar + 600 g de batata + 2 refrigerantes 220 ml.", 84],
-    ["Combo Especial Duplo Cheddar — Individual", "1 Especial Duplo Cheddar + 300 g de batata + refrigerante 220 ml.", 47],
-    ["Combo Especial Lanche", "2 Chickens + 500 g de batata bacon cheddar + 2 refrigerantes 220 ml.", 80],
-    ["Combo Individual Chicken", "1 Chicken + 300 g de batata bacon cheddar + refrigerante 220 ml.", 40]
+    { nome: "X-Burguer", descricao: "Pão, hambúrguer, queijo e molho de alho.", preco: 19 },
+    { nome: "Pop Chicken", descricao: "Pão, Sassami, catupiry e molho de alho.", preco: 22 },
+    { nome: "Chicken", descricao: "Pão, Sassami, alface, tomate, cebola e molho de alho.", preco: 26 },
+    { nome: "X-Calabresa", descricao: "Pão, molho de alho, queijo, calabresa, hambúrguer, alface, tomate e cebola.", preco: 27 },
+    { nome: "X-Bacon", descricao: "Pão, muçarela, hambúrguer, creme de alho, bacon e catupiry.", preco: 27 },
+    { nome: "X-Salada", descricao: "Pão, hambúrguer, molho de alho, alface, tomate e cebola.", preco: 25 },
+    { nome: "X-Rings", descricao: "Pão, hambúrguer, 3 anéis de cebola, muçarela, alface, cebola e molho de alho.", preco: 27 },
+    { nome: "Especial Duplo Cheddar", descricao: "Pão, 2 hambúrgueres, cheddar, bacon, molho de alho e cebola caramelizada.", preco: 37 },
+    { nome: "Duplo Cheddar", descricao: "Pão, cheddar, 2 hambúrgueres, bacon e molho de alho.", preco: 33 },
+    { nome: "Americano", descricao: "Pão, tomate, alface, cebola, pepino, Sassami, cheddar e molho de alho.", preco: 28 },
+    { nome: "Combo Individual de Lanche", descricao: "1 Chicken + 300 g batata + refri 220 ml.", preco: 40 },
+    { nome: "Combo Duo de Lanche", descricao: "2 Chickens + 500 g batata + 2 refris 220 ml.", preco: 72 },
+    { nome: "Combo Trio de Lanche", descricao: "3 Chickens + 500 g batata + 3 refris 220 ml.", preco: 80 },
+    { nome: "Combo Família de Lanche", descricao: "5 Chickens + 1 kg batata + refri 2 L.", preco: 110 },
+    { nome: "Combo Especial Duplo Cheddar — Duo", descricao: "2 Especial Duplo Cheddar + 600 g batata + 2 refris 220 ml.", preco: 84 },
+    { nome: "Combo Especial Duplo Cheddar — Individual", descricao: "1 Especial Duplo Cheddar + 300 g batata + refri 220 ml.", preco: 47 },
+    { nome: "Combo Especial Lanche", descricao: "2 Chickens + 500 g batata bacon cheddar + 2 refris 220 ml.", preco: 80 },
+    { nome: "Combo Individual Chicken", descricao: "1 Chicken + 300 g batata bacon cheddar + refri 220 ml.", preco: 40 }
   ],
 
   tulipa: [
-    ["Balde de Tulipa — 8 unidades", "Balde com 8 unidades de Tulipa.", 26],
-    ["Balde de Tulipa — P", "Balde de Tulipa tamanho P.", 54],
-    ["Balde de Tulipa — M", "Balde de Tulipa tamanho M.", 64],
-    ["Balde de Tulipa — G", "Balde de Tulipa tamanho G.", 74],
-    ["Balde de Tulipa Fritas — P", "Tulipas acompanhadas de Batata Frita ou Polenta Frita.", 70, "fritas"],
-    ["Balde de Tulipa Fritas — M", "Tulipas acompanhadas de Batata Frita ou Polenta Frita.", 80, "fritas"]
+    { nome: "Balde de Tulipa — 8 unidades", descricao: "Balde com 8 unidades.", preco: 26 },
+    { nome: "Balde de Tulipa — P", descricao: "Balde pequeno.", preco: 54 },
+    { nome: "Balde de Tulipa — M", descricao: "Balde médio.", preco: 64 },
+    { nome: "Balde de Tulipa — G", descricao: "Balde grande.", preco: 74 },
+    { nome: "Balde de Tulipa Fritas — P", descricao: "Acompanha batata ou polenta.", preco: 70, escolhaFrita: true },
+    { nome: "Balde de Tulipa Fritas — M", descricao: "Acompanha batata ou polenta.", preco: 80, escolhaFrita: true }
   ],
 
   combos: [
-    ["Combo 1", "1 kg de frango + 1 kg de batata com bacon e cheddar.", 96],
-    ["Combo 2 — Misto", "1 kg de coxinha e Sassami + 1 kg de polenta + 500 g de calabresa acebolada.", 130],
-    ["Combo 3", "1 kg de coxinha + 500 g de batata + 500 g de anel de cebola + 500 g de polenta + refrigerante 2 litros.", 120],
-    ["Combo 4", "1 kg de mandioca + 1 kg de Sassami + 500 g de calabresa + refrigerante 2 litros.", 65],
-    ["Combo 5", "1 kg de batata com bacon e cheddar.", 85],
-    ["Combo 6", "1 kg de mandioca + 500 g de calabresa.", 70]
+    { nome: "Combo 1", descricao: "1 kg frango + 1 kg batata com bacon e cheddar.", preco: 96 },
+    { nome: "Combo 2 — Misto", descricao: "1 kg coxinha e Sassami + 1 kg polenta + 500 g calabresa acebolada.", preco: 130 },
+    { nome: "Combo 3", descricao: "1 kg coxinha + 500 g batata + 500 g anel de cebola + 500 g polenta + refri 2 L.", preco: 120 },
+    { nome: "Combo 4", descricao: "1 kg mandioca + 1 kg Sassami + 500 g calabresa + refri 2 L.", preco: 65 },
+    { nome: "Combo 5", descricao: "1 kg batata bacon cheddar.", preco: 85 },
+    { nome: "Combo 6", descricao: "1 kg mandioca + 500 g calabresa.", preco: 70 }
   ],
 
   bebidas: [
-    ["Coca-Cola 350 ml", "", 6],
-    ["Coca-Cola Zero 350 ml", "", 6],
-    ["Fanta Guaraná 350 ml", "", 6],
-    ["Sprite 350 ml", "", 6],
-    ["Fanta Laranja 350 ml", "", 6],
-    ["Coca-Cola 600 ml", "", 9],
-    ["Coca-Cola Zero 600 ml", "", 9],
-    ["Fanta Guaraná 600 ml", "", 9],
-    ["Sprite 600 ml", "", 9],
-    ["Fanta Laranja 600 ml", "", 9],
-    ["Coca-Cola 2 L", "", 15],
-    ["Coca-Cola Zero 2 L", "", 15],
-    ["Guaraná 2 L", "", 14],
-    ["Fanta 2 L", "", 14],
-    ["Sprite 2 L", "", 14],
-    ["Água com gás", "", 3.5]
+    { nome: "Coca-Cola 350 ml", preco: 6 },
+    { nome: "Coca-Cola Zero 350 ml", preco: 6 },
+    { nome: "Fanta Guaraná 350 ml", preco: 6 },
+    { nome: "Sprite 350 ml", preco: 6 },
+    { nome: "Fanta Laranja 350 ml", preco: 6 },
+    { nome: "Coca-Cola 600 ml", preco: 9 },
+    { nome: "Coca-Cola Zero 600 ml", preco: 9 },
+    { nome: "Fanta Guaraná 600 ml", preco: 9 },
+    { nome: "Sprite 600 ml", preco: 9 },
+    { nome: "Fanta Laranja 600 ml", preco: 9 },
+    { nome: "Coca-Cola 2 L", preco: 15 },
+    { nome: "Coca-Cola Zero 2 L", preco: 15 },
+    { nome: "Guaraná 2 L", preco: 14 },
+    { nome: "Fanta 2 L", preco: 14 },
+    { nome: "Sprite 2 L", preco: 14 },
+    { nome: "Água com gás", preco: 3.5 }
   ],
 
   porcoes: [
-    ["Salada Americana", "Alface americano, tomate cereja, frango crocante e molho especial.", 28],
-    ["Batata Apimentada", "Batata acompanhada de molho de pimenta.", 38],
-    ["Batata 300 g", "", 19],
-    ["Batata 500 g", "", 30],
-    ["Batata Bacon + Cheddar 500 g", "", 36],
-    ["Polenta 300 g", "", 12],
-    ["Polenta 500 g", "", 17],
-    ["Anel de Cebola 300 g", "", 20],
-    ["Anel de Cebola 500 g", "", 35]
+    { nome: "Salada Americana", preco: 28 },
+    { nome: "Batata Apimentada", preco: 38 },
+    { nome: "Batata 300 g", preco: 19 },
+    { nome: "Batata 500 g", preco: 30 },
+    { nome: "Batata Bacon + Cheddar 500 g", preco: 36 },
+    { nome: "Polenta 300 g", preco: 12 },
+    { nome: "Polenta 500 g", preco: 17 },
+    { nome: "Anel de Cebola 300 g", preco: 20 },
+    { nome: "Anel de Cebola 500 g", preco: 35 }
   ],
 
   molhos: [
-    ["Cheddar", "", 6],
-    ["Pimenta", "", 6],
-    ["Mostarda e Mel", "", 6],
-    ["Abacaxi com Pimenta", "", 6],
-    ["Creme de Alho", "", 6],
-    ["Barbecue", "", 5],
-    ["Ketchup", "", 5]
+    { nome: "Cheddar", preco: 6 },
+    { nome: "Pimenta", preco: 6 },
+    { nome: "Mostarda e Mel", preco: 6 },
+    { nome: "Abacaxi com Pimenta", preco: 6 },
+    { nome: "Creme de Alho", preco: 6 },
+    { nome: "Barbecue", preco: 5 },
+    { nome: "Ketchup", preco: 5 }
   ]
 };
 
 const adicionais = [
-  ["Anel de Cebola", 3],
-  ["Hambúrguer", 10],
-  ["Bacon", 5],
-  ["Muçarela", 4],
-  ["Alface", 1],
-  ["Catupiry", 5],
-  ["Tomate", 1],
-  ["Cebola", 1],
-  ["Cheddar", 5],
-  ["Cebola Roxa", 4]
+  { nome: "Anel de Cebola", preco: 3 },
+  { nome: "Hambúrguer", preco: 10 },
+  { nome: "Bacon", preco: 5 },
+  { nome: "Muçarela", preco: 4 },
+  { nome: "Alface", preco: 1 },
+  { nome: "Catupiry", preco: 5 },
+  { nome: "Tomate", preco: 1 },
+  { nome: "Cebola", preco: 1 },
+  { nome: "Cheddar", preco: 5 },
+  { nome: "Cebola Roxa", preco: 4 }
 ];
 
-const lanchesIndividuais = [
-  "X-Burguer", "Pop Chicken", "Chicken", "X-Calabresa", "X-Bacon",
-  "X-Salada", "X-Rings", "Especial Duplo Cheddar", "Duplo Cheddar", "Americano"
-];
-
-function $(id) {
-  return document.getElementById(id);
-}
+const $ = (id) => document.getElementById(id);
 
 function dinheiro(valor) {
   return Number(valor).toLocaleString("pt-BR", {
@@ -129,210 +122,197 @@ function dinheiro(valor) {
 function abrirCardapio() {
   $("inicio").classList.add("hidden");
   $("categorias").classList.remove("hidden");
-  window.scrollTo(0, 0);
+  $("produtos").classList.add("hidden");
+  $("carrinho").classList.add("hidden");
 }
 
 function abrirCategoria(categoria) {
   if (!cardapio[categoria]) return;
+
   $("categorias").classList.add("hidden");
-  $("carrinho").classList.add("hidden");
   $("produtos").classList.remove("hidden");
+  $("carrinho").classList.add("hidden");
+
   renderProdutos(categoria);
-  window.scrollTo(0, 0);
 }
 
 function voltarCategorias() {
   $("produtos").classList.add("hidden");
   $("categorias").classList.remove("hidden");
-  window.scrollTo(0, 0);
 }
 
 function renderProdutos(categoria) {
   const lista = $("lista-produtos");
   lista.innerHTML = "";
 
-  cardapio[categoria].forEach((produto, indice) => {
-    const elemento = document.createElement("article");
-    elemento.className = "product-card";
+  cardapio[categoria].forEach((produto) => {
+    const card = document.createElement("div");
+    card.className = "product-card";
 
-    const titulo = document.createElement("h3");
-    titulo.textContent = produto[0];
-    elemento.appendChild(titulo);
+    const descricao = produto.descricao || "";
 
-    if (produto[1]) {
-      const descricao = document.createElement("p");
-      descricao.textContent = produto[1];
-      elemento.appendChild(descricao);
-    }
+    card.innerHTML = `
+      <h3>${produto.nome}</h3>
+      <p>${descricao}</p>
+      <div class="product-bottom">
+        <strong class="price">${dinheiro(produto.preco)}</strong>
+        <button class="add-button" type="button">Adicionar</button>
+      </div>
+    `;
 
-    const parteInferior = document.createElement("div");
-    parteInferior.className = "product-bottom";
+    card.querySelector(".add-button").addEventListener("click", () => {
+      adicionarProduto(produto);
+    });
 
-    const preco = document.createElement("span");
-    preco.className = "price";
-    preco.textContent = dinheiro(produto[2]);
-
-    const botao = document.createElement("button");
-    botao.className = "add-button";
-    botao.type = "button";
-    botao.textContent = "+ ADICIONAR";
-    botao.onclick = () => adicionarProduto(categoria, indice);
-
-    parteInferior.append(preco, botao);
-    elemento.appendChild(parteInferior);
-    lista.appendChild(elemento);
+    lista.appendChild(card);
   });
 }
 
-function adicionarProduto(categoria, indice) {
-  const produto = cardapio[categoria][indice];
-
-  if (produto[3] === "fritas") {
+function adicionarProduto(produto) {
+  if (produto.escolhaFrita) {
     abrirFritas(produto);
     return;
   }
 
-  if (categoria === "lanches" && lanchesIndividuais.includes(produto[0])) {
+  if (produto.nome.toLowerCase().includes("chicken") ||
+      produto.nome.toLowerCase().includes("burguer") ||
+      produto.nome.toLowerCase().includes("cheddar") ||
+      produto.nome.toLowerCase().includes("salada") ||
+      produto.nome.toLowerCase().includes("calabresa") ||
+      produto.nome.toLowerCase().includes("rings") ||
+      produto.nome.toLowerCase().includes("americano")) {
     abrirAdicionais(produto);
     return;
   }
 
-  adicionarCarrinho(produto[0], produto[2], []);
+  adicionarCarrinho(produto);
 }
 
 function abrirAdicionais(produto) {
-  let html = `<div class="modal-content">
-    <h2>${produto[0]}</h2>
-    <p>Escolha os adicionais, se desejar:</p>
-    <div class="option-list">`;
+  const opcoes = adicionais.map((adicional, index) => `
+    <label class="option-item">
+      <input type="checkbox" value="${index}">
+      ${adicional.nome} (+${dinheiro(adicional.preco)})
+    </label>
+  `).join("");
 
-  adicionais.forEach((adicional, indice) => {
-    html += `<label class="option-item">
-      <input type="checkbox" id="extra-${indice}">
-      ${adicional[0]} — ${dinheiro(adicional[1])}
-    </label>`;
-  });
-
-  html += `</div>
+  abrirModal(`
+    <h2>Adicionais</h2>
+    <p>Escolha os adicionais desejados:</p>
+    <div class="option-list">${opcoes}</div>
     <div class="modal-actions">
-      <button class="cancel" type="button" onclick="fecharModal()">CANCELAR</button>
-      <button class="confirm" type="button" id="confirmar-adicionais">ADICIONAR</button>
+      <button class="cancel" onclick="fecharModal()">Cancelar</button>
+      <button class="confirm" id="confirmar-adicionais">Adicionar ao carrinho</button>
     </div>
-  </div>`;
-
-  abrirModal(html);
+  `);
 
   $("confirmar-adicionais").onclick = () => {
-    const extras = [];
-    let precoFinal = produto[2];
+    const selecionados = [...document.querySelectorAll(".option-list input:checked")];
+    const extras = selecionados.map((input) => adicionais[Number(input.value)]);
 
-    adicionais.forEach((adicional, indice) => {
-      const checkbox = $("extra-" + indice);
-      if (checkbox && checkbox.checked) {
-        extras.push(adicional[0]);
-        precoFinal += adicional[1];
-      }
+    const precoExtras = extras.reduce((soma, item) => soma + item.preco, 0);
+
+    adicionarCarrinho({
+      nome: produto.nome,
+      preco: produto.preco + precoExtras,
+      extras: extras.map((item) => item.nome)
     });
 
-    adicionarCarrinho(produto[0], precoFinal, extras);
     fecharModal();
   };
 }
 
 function abrirFritas(produto) {
-  abrirModal(`<div class="modal-content">
-    <h2>${produto[0]}</h2>
-    <p>Escolha o acompanhamento:</p>
+  abrirModal(`
+    <h2>Escolha o acompanhamento</h2>
     <div class="option-list">
-      <button class="confirm" type="button" id="escolher-batata">🍟 BATATA FRITA</button>
-      <button class="confirm" type="button" id="escolher-polenta">🥔 POLENTA FRITA</button>
+      <label class="option-item">
+        <input type="radio" name="frita" value="Batata Frita">
+        Batata Frita
+      </label>
+      <label class="option-item">
+        <input type="radio" name="frita" value="Polenta Frita">
+        Polenta Frita
+      </label>
     </div>
     <div class="modal-actions">
-      <button class="cancel" type="button" onclick="fecharModal()">CANCELAR</button>
+      <button class="cancel" onclick="fecharModal()">Cancelar</button>
+      <button class="confirm" id="confirmar-fritas">Confirmar</button>
     </div>
-  </div>`);
+  `);
 
-  $("escolher-batata").onclick = () => {
-    confirmarFritas(produto[0], produto[2], "Batata Frita");
-  };
+  $("confirmar-fritas").onclick = () => {
+    const escolha = document.querySelector('input[name="frita"]:checked');
 
-  $("escolher-polenta").onclick = () => {
-    confirmarFritas(produto[0], produto[2], "Polenta Frita");
+    if (!escolha) {
+      alert("Escolha batata ou polenta.");
+      return;
+    }
+
+    adicionarCarrinho({
+      nome: produto.nome + " — " + escolha.value,
+      preco: produto.preco
+    });
+
+    fecharModal();
   };
 }
 
-function confirmarFritas(nome, preco, acompanhamento) {
-  adicionarCarrinho(nome, preco, [acompanhamento]);
-  fecharModal();
-}
-
-function adicionarCarrinho(nome, preco, extras) {
+function adicionarCarrinho(produto) {
   carrinho.push({
-    nome,
-    preco: Number(preco),
-    extras
+    nome: produto.nome,
+    preco: Number(produto.preco),
+    extras: produto.extras || []
   });
 
   atualizarTudo();
-  toast(nome + " foi adicionado ao carrinho!");
+  toast("Produto adicionado ao carrinho!");
 }
 
-function removerItem(indice) {
-  carrinho.splice(indice, 1);
+function removerItem(index) {
+  carrinho.splice(index, 1);
   atualizarTudo();
 }
 
 function abrirCarrinho() {
+  $("inicio").classList.add("hidden");
   $("categorias").classList.add("hidden");
   $("produtos").classList.add("hidden");
   $("carrinho").classList.remove("hidden");
   renderCarrinho();
-  window.scrollTo(0, 0);
 }
 
 function fecharCarrinho() {
   $("carrinho").classList.add("hidden");
   $("categorias").classList.remove("hidden");
-  window.scrollTo(0, 0);
 }
 
 function renderCarrinho() {
   const lista = $("lista-carrinho");
   lista.innerHTML = "";
 
-  if (!carrinho.length) {
-    lista.innerHTML = '<div class="empty-cart">Seu carrinho está vazio. 🍗</div>';
-    atualizarResumo();
-    return;
+  if (carrinho.length === 0) {
+    lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
   }
 
-  carrinho.forEach((item, indice) => {
-    const elemento = document.createElement("div");
-    elemento.className = "cart-item";
+  carrinho.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = "cart-item";
 
-    const detalhes = document.createElement("div");
-    const titulo = document.createElement("h3");
-    titulo.textContent = item.nome;
-    detalhes.appendChild(titulo);
+    const extras = item.extras.length
+      ? `<small>Adicionais: ${item.extras.join(", ")}</small>`
+      : "";
 
-    if (item.extras.length) {
-      const extras = document.createElement("small");
-      extras.textContent = "+ " + item.extras.join(", ");
-      detalhes.appendChild(extras);
-    }
+    div.innerHTML = `
+      <div>
+        <strong>${item.nome}</strong>
+        ${extras}
+        <p>${dinheiro(item.preco)}</p>
+      </div>
+      <button type="button" onclick="removerItem(${index})">Remover</button>
+    `;
 
-    const preco = document.createElement("strong");
-    preco.textContent = dinheiro(item.preco);
-    detalhes.appendChild(preco);
-
-    const remover = document.createElement("button");
-    remover.className = "remove-button";
-    remover.type = "button";
-    remover.textContent = "🗑️";
-    remover.onclick = () => removerItem(indice);
-
-    elemento.append(detalhes, remover);
-    lista.appendChild(elemento);
+    lista.appendChild(div);
   });
 
   atualizarResumo();
@@ -347,60 +327,85 @@ function total() {
 }
 
 function atualizarResumo() {
-  $("subtotal").textContent = dinheiro(subtotal());
-  $("taxa-entrega").textContent = dinheiro(tipoEntrega === "entrega" ? TAXA_ENTREGA : 0);
-  $("total-final").textContent = dinheiro(total());
-  $("cart-count-home").textContent = carrinho.length;
-  $("cart-count-products").textContent = carrinho.length;
+  if ($("subtotal")) $("subtotal").textContent = dinheiro(subtotal());
+
+  if ($("taxa-entrega")) {
+    $("taxa-entrega").textContent = dinheiro(
+      tipoEntrega === "entrega" ? TAXA_ENTREGA : 0
+    );
+  }
+
+  if ($("total-final")) $("total-final").textContent = dinheiro(total());
+
+  if ($("cart-count-home")) {
+    $("cart-count-home").textContent = carrinho.length;
+  }
+
+  if ($("cart-count-products")) {
+    $("cart-count-products").textContent = carrinho.length;
+  }
 }
 
 function atualizarTudo() {
-  renderCarrinho();
   atualizarResumo();
+
+  if (!$("carrinho").classList.contains("hidden")) {
+    renderCarrinho();
+  }
 }
 
 function selecionarEntrega(tipo, botao) {
   tipoEntrega = tipo;
 
-  document.querySelectorAll(".opcao-entrega").forEach(b => {
-    b.classList.remove("selecionado");
+  document.querySelectorAll(".choice-grid button").forEach((b) => {
+    if (b.closest("#carrinho")) b.classList.remove("selected");
   });
 
-  botao.classList.add("selecionado");
-  $("endereco").style.display = tipo === "entrega" ? "block" : "none";
+  if (botao) botao.classList.add("selected");
+
+  if ($("endereco")) {
+    $("endereco").style.display = tipo === "entrega" ? "block" : "none";
+  }
+
   atualizarResumo();
 }
 
-function selecionarPagamento(pagamento, botao) {
-  formaPagamento = pagamento;
+function selecionarPagamento(tipo, botao) {
+  formaPagamento = tipo;
 
-  document.querySelectorAll(".opcao-pagamento").forEach(b => {
-    b.classList.remove("selecionado");
+  document.querySelectorAll(".choice-grid button").forEach((b) => {
+    if (b.closest("#carrinho")) b.classList.remove("selected");
   });
 
-  botao.classList.add("selecionado");
-  $("campo-troco").style.display = pagamento === "Dinheiro" ? "block" : "none";
-  $("dados-pix").style.display = pagamento === "PIX" ? "block" : "none";
+  if (botao) botao.classList.add("selected");
 
-  if (pagamento !== "Dinheiro") {
-    trocoPara = "";
-    $("troco-valor").style.display = "none";
-    $("troco-input").value = "";
+  if ($("campo-troco")) {
+    $("campo-troco").style.display = tipo === "Dinheiro" ? "block" : "none";
   }
+
+  if ($("dados-pix")) {
+    $("dados-pix").style.display = tipo === "PIX" ? "block" : "none";
+  }
+
+  if (tipo !== "Dinheiro") trocoPara = "";
 }
 
 function mostrarCampoTroco() {
-  $("troco-valor").style.display = "block";
-  $("troco-input").focus();
   trocoPara = "";
+
+  if ($("troco-input")) $("troco-input").value = "";
+
+  if ($("campo-troco-input")) {
+    $("campo-troco-input").style.display = "block";
+  }
 }
 
 function definirTroco(valor) {
   trocoPara = valor;
 }
 
-function abrirModal(html) {
-  $("modal").innerHTML = html;
+function abrirModal(conteudo) {
+  $("modal").innerHTML = `<div class="modal-content">${conteudo}</div>`;
   $("modal").classList.remove("hidden");
 }
 
@@ -409,71 +414,67 @@ function fecharModal() {
   $("modal").innerHTML = "";
 }
 
-function toast(texto) {
+function toast(mensagem) {
   const elemento = $("toast");
-  elemento.textContent = texto;
-  elemento.style.display = "block";
-  clearTimeout(window.toastTimer);
-  window.toastTimer = setTimeout(() => {
-    elemento.style.display = "none";
-  }, 2200);
+  if (!elemento) return;
+
+  elemento.textContent = mensagem;
+  elemento.classList.remove("hidden");
+
+  setTimeout(() => {
+    elemento.classList.add("hidden");
+  }, 2500);
 }
 
-async function salvarPedidoNoSupabase(dados) {
+async function salvarPedidoNoSupabase(pedido) {
   if (!supabaseClient) {
-    return { ok: false, erro: "A biblioteca do Supabase não carregou." };
+    return { ok: false, erro: "Supabase não foi carregado." };
   }
 
   try {
-    const tentativa = supabaseClient
-      .from("Pedidos")
-      .insert([dados]);
-
     const resultado = await Promise.race([
-      tentativa.then(resposta => ({
-        terminou: true,
-        resposta
-      })),
-      new Promise(resolve => setTimeout(() => resolve({
-        terminou: false
-      }), 8000))
+      supabaseClient.from("Pedidos").insert([pedido]),
+      new Promise((_, rejeitar) =>
+        setTimeout(() => rejeitar(new Error("Tempo esgotado ao salvar pedido.")), 8000)
+      )
     ]);
 
-    if (!resultado.terminou) {
-      return {
-        ok: false,
-        erro: "O banco demorou mais de 8 segundos para responder."
-      };
+    if (resultado.error) {
+      return { ok: false, erro: resultado.error.message };
     }
 
-    if (resultado.resposta.error) {
-      console.error("Erro Supabase:", resultado.resposta.error);
-      return {
-        ok: false,
-        erro: resultado.resposta.error.message
-      };
-    }
-
-    return { ok: true, erro: "" };
+    return { ok: true };
   } catch (erro) {
-    console.error("Erro Supabase:", erro);
-    return {
-      ok: false,
-      erro: erro.message || "Não foi possível conectar ao banco."
-    };
+    return { ok: false, erro: erro.message };
   }
 }
 
 async function enviarPedido() {
   if (enviandoPedido) return;
 
-  if (!carrinho.length) {
-    alert("Seu carrinho está vazio!");
+  if (carrinho.length === 0) {
+    alert("Adicione produtos ao carrinho.");
+    return;
+  }
+
+  const nome = $("nome").value.trim();
+
+  if (!nome) {
+    alert("Digite seu nome.");
+    $("nome").focus();
     return;
   }
 
   if (!tipoEntrega) {
-    alert("Escolha Retirada ou Entrega.");
+    alert("Escolha entre retirada e entrega.");
+    return;
+  }
+
+  const rua = $("rua") ? $("rua").value.trim() : "";
+
+  if (tipoEntrega === "entrega" && !rua) {
+    alert("Digite seu endereço.");
+    $("rua").focus();
     return;
   }
 
@@ -482,97 +483,68 @@ async function enviarPedido() {
     return;
   }
 
-  const nome = $("nome").value.trim();
-  const rua = $("rua").value.trim();
-  const observacao = $("observacao").value.trim();
+  const observacao = $("observacao") ? $("observacao").value.trim() : "";
 
-  if (!nome) {
-    alert("Digite seu nome.");
-    $("nome").focus();
-    return;
-  }
+  const itensTexto = carrinho.map((item) => {
+    const extras = item.extras.length
+      ? ` (Adicionais: ${item.extras.join(", ")})`
+      : "";
 
-  if (tipoEntrega === "entrega" && !rua) {
-    alert("Informe a rua e o número.");
-    $("rua").focus();
-    return;
-  }
+    return `${item.nome}${extras} - ${dinheiro(item.preco)}`;
+  }).join("\n");
 
-  const totalPedido = total();
-
-  const dados = {
+  const pedido = {
     Nome_clientes: nome,
-    Tipo_entrega: tipoEntrega === "entrega" ? "Entrega" : "Retirada",
-    Rua: tipoEntrega === "entrega" ? rua : "Não se aplica",
-    Observacao: observacao || "Nenhuma",
+    Tipo_entrega: tipoEntrega,
+    Rua: rua,
+    Observacao: observacao,
     Pagamento: formaPagamento,
-    Troco: formaPagamento === "Dinheiro" ? (trocoPara || "Não precisa") : "Não se aplica",
-    Itens: carrinho.map(item =>
-      item.nome + (item.extras.length ? " | " + item.extras.join(", ") : "")
-    ).join(" | "),
-    Total: totalPedido,
+    Troco: formaPagamento === "Dinheiro" ? (trocoPara || "Não informado") : "",
+    Itens: itensTexto,
+    Total: total(),
     Data: new Date().toISOString()
   };
 
-  let mensagem = "🍗 *NOVO PEDIDO — BENVENUTO CHICKEN*";
-  mensagem += "\n\n👤 *Cliente:* " + nome;
-  mensagem += "\n📦 *Tipo:* " + (tipoEntrega === "entrega" ? "Entrega" : "Retirada");
+  let mensagem = `🍗 *NOVO PEDIDO - BENVENUTO CHICKEN*\n\n`;
+  mensagem += `👤 Nome: ${nome}\n`;
+  mensagem += `📦 Tipo: ${tipoEntrega === "entrega" ? "Entrega" : "Retirada"}\n`;
 
   if (tipoEntrega === "entrega") {
-    mensagem += "\n📍 *Endereço:* " + rua;
+    mensagem += `📍 Endereço: ${rua}\n`;
+    mensagem += `🚚 Taxa de entrega: ${dinheiro(TAXA_ENTREGA)}\n`;
   }
 
-  mensagem += "\n\n🛒 *PEDIDO:*";
-
-  carrinho.forEach(item => {
-    mensagem += "\n• " + item.nome + " — " + dinheiro(item.preco);
-    if (item.extras.length) {
-      mensagem += "\n  + " + item.extras.join(", ");
-    }
-  });
-
-  mensagem += "\n\n💰 *Subtotal:* " + dinheiro(subtotal());
-
-  if (tipoEntrega === "entrega") {
-    mensagem += "\n🚚 *Taxa:* " + dinheiro(TAXA_ENTREGA);
-  }
-
-  mensagem += "\n💵 *TOTAL:* " + dinheiro(totalPedido);
-  mensagem += "\n💳 *Pagamento:* " + formaPagamento;
+  mensagem += `\n🛒 *PEDIDO:*\n${itensTexto}\n`;
+  mensagem += `\n💰 Subtotal: ${dinheiro(subtotal())}\n`;
+  mensagem += `💰 Total: ${dinheiro(total())}\n`;
+  mensagem += `💳 Pagamento: ${formaPagamento}\n`;
 
   if (formaPagamento === "Dinheiro") {
-    mensagem += "\n💵 *Troco:* " + (trocoPara || "Não precisa");
+    mensagem += `💵 Troco: ${trocoPara || "Não informado"}\n`;
   }
 
   if (formaPagamento === "PIX") {
-    mensagem += "\n🔑 *PIX:* " + PIX;
+    mensagem += `🔑 Chave PIX: ${PIX}\n`;
   }
 
   if (observacao) {
-    mensagem += "\n\n📝 *Observação:* " + observacao;
+    mensagem += `\n📝 Observação: ${observacao}\n`;
   }
-
-  mensagem += "\n\nObrigado pelo pedido! ❤️";
-
-  const url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensagem);
 
   enviandoPedido = true;
-  const botaoEnviar = document.querySelector(".whatsapp-button");
-  botaoEnviar.disabled = true;
-  botaoEnviar.textContent = "⏳ PREPARANDO PEDIDO...";
 
-  const salvamento = await salvarPedidoNoSupabase(dados);
+  try {
+    const resultado = await salvarPedidoNoSupabase(pedido);
 
-  if (!salvamento.ok) {
-    alert(
-      "Atenção: não conseguimos confirmar o salvamento do pedido no sistema.\n\n" +
-      "O WhatsApp será aberto para você não perder o pedido.\n\n" +
-      "Motivo: " + salvamento.erro
-    );
+    if (!resultado.ok) {
+      alert("Não foi possível salvar o pedido no sistema. Ele ainda será enviado pelo WhatsApp.\n\nErro: " + resultado.erro);
+    }
+
+    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+    window.location.assign(url);
+  } finally {
+    enviandoPedido = false;
   }
-
-  // Abre o WhatsApp mesmo se o salvamento falhar.
-  window.location.assign(url);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
